@@ -1,17 +1,17 @@
 
-export const URLValidation = (value) => {
+export const URLValidation = (value, boolVal) => {
     let urlBoolean = false
-    const re=/^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/;
-    if(re.test(value)){
+    const re=/\b(https?|ftp|file):\/\/[\-A-Za-z0-9+&@#\/%?=~_|!:,.;]*[\-A-Za-z0-9+&@#\/%=~_|]/;
+    if((value.length === 0 && boolVal === false) || re.test(value)){
         urlBoolean = true
     }
     return urlBoolean
 }
 
-export const numValidation = (value) => {
+export const numValidation = (value, boolVal) => {
     let isNumVal = false
-    const re = /^-?[1-9]\d*(\.\d+)?$/
-    if(re.test(value)){
+    const re = /^-?[0-9]\d*(\.\d+)?$/
+    if((value.length === 0 && boolVal === false) || re.test(value)){
         isNumVal = true
     }
     return isNumVal
