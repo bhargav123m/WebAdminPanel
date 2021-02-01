@@ -6,6 +6,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'firebase/firestore'
 import {getDataFromFireStore, saveDataToTheFireStore} from './ApiDefinition'
+import Tooltip from '@material-ui/core/Tooltip';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  customWidth: {
+    maxWidth: 500,
+    fontSize: 12
+  },
+});
 
 const unBoxingStyles = {
   border: '2px solid black',
@@ -92,6 +101,7 @@ const popupSpanStyles = {
 
 
 const App = () => {  
+  const classes = useStyles();
   const [showEdit, setShowEdit] = useState(true)
   const [inputDetails, setInputDetails] = useState({
         unboxingInputDetailsSeasonalElementAndroidInputVal: {
@@ -297,8 +307,12 @@ const App = () => {
          <p>Model(Url):</p>
          <p>&#60;modelurl&#62;</p>
          </span>
-           <Input style={!inputDetails.popupStoreDetailsModelAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'popupStoreDetailsModelAndroidInputVal')}/>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal}>
+          <Input style={!inputDetails.popupStoreDetailsModelAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'popupStoreDetailsModelAndroidInputVal')}/>
+        </Tooltip>
+        <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.popupStoreDetailsModelIosInputVal.popupStoreDetailsModelIosInputVal}>
            <Input style={!inputDetails.popupStoreDetailsModelIosInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.popupStoreDetailsModelIosInputVal.popupStoreDetailsModelIosInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'popupStoreDetailsModelIosInputVal')}/>
+           </Tooltip>
          </div>
        </div>
 
@@ -315,22 +329,30 @@ const App = () => {
          <p>Animation/Model(Url):</p>
          <p>&#60;modelurl&#62;</p>
          </span>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal}>
            <Input style={!inputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsAnimationAndroidInputVal')}/>
+           </Tooltip>
+           <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsAnimationIosInputVal.augmentedBannerOneDetailsAnimationIosInputVal}>
            <Input style={!inputDetails.augmentedBannerOneDetailsAnimationIosInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsAnimationIosInputVal.augmentedBannerOneDetailsAnimationIosInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsAnimationIosInputVal')}/>
+           </Tooltip>
           </div>
           <div style={inputRowStyles}>
            <span style={spanStyles}>
          <p>2D Target Image #1:</p>
          <p>&#60;imageSize[]&#62;</p>
          </span >
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal}>
            <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetImageOneInputVal')}/>
+           </Tooltip>
           </div>
           <div style={inputRowStyles}>
            <span style={spanStyles}>
          <p>2D Target Image #2:</p>
          <p>&#60;imageSize[]&#62;</p>
          </span>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal}>
            <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal')}/>
+           </Tooltip>
           </div>
       </div>
 
@@ -411,20 +433,28 @@ const App = () => {
          <p>Animation/Model(Url):</p>
          <p>&#60;modelurl&#62;</p>
          </span>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.stadiumNoBaneerDetailsAnimationAndroidInputVal}>
            <Input style={!inputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.stadiumNoBaneerDetailsAnimationAndroidInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'stadiumNoBaneerDetailsAnimationAndroidInputVal')}/>
+           </Tooltip>
+           <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.stadiumNoBaneerDetailsAnimationIosInputVal.stadiumNoBaneerDetailsAnimationIosInputVal}>
            <Input style={!inputDetails.stadiumNoBaneerDetailsAnimationIosInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.stadiumNoBaneerDetailsAnimationIosInputVal.stadiumNoBaneerDetailsAnimationIosInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'stadiumNoBaneerDetailsAnimationIosInputVal')}/>
+           </Tooltip>
           </div>
           <div style={inputRowStyles}>
            <span style={latSpanStyles}>
          <p>Latitude(#):</p>
          </span>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal}>
            <Input style={!inputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'stadiumNoBaneerDetailsLatitudeAndroidInputVal')}/>
+           </Tooltip>
           </div>
           <div style={inputRowStyles}>
            <span style={lonSpanStyles}>
          <p>Longitude(#):</p>
          </span>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal}>
            <Input style={!inputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'stadiumNoBaneerDetailsLongitudAandroidInputVal')}/>
+           </Tooltip>
           </div>
       </div>
 
@@ -441,8 +471,12 @@ const App = () => {
          <p>Seasonal Element(Url):</p>
          <p>&#60;modelurl&#62;</p>
          </span>
+         <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.unboxingInputDetailsSeasonalElementAndroidInputVal}>
            <Input style={!inputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} : firstInputStyles} placeholder={'Enter the Valid URL'} disabled={showEdit} value={inputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.unboxingInputDetailsSeasonalElementAndroidInputVal} onChange={(e) =>inputHandler(e,'unboxingInputDetailsSeasonalElementAndroidInputVal')}/>
+           </Tooltip>
+           <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.unboxingInputDetailsSeasonalElementIosInputVal.unboxingInputDetailsSeasonalElementIosInputVal}>
            <Input style={!inputDetails.unboxingInputDetailsSeasonalElementIosInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.unboxingInputDetailsSeasonalElementIosInputVal.unboxingInputDetailsSeasonalElementIosInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'unboxingInputDetailsSeasonalElementIosInputVal')}/>
+           </Tooltip>
          </div>
        </div>
 
