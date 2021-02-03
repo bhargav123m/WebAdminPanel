@@ -8,6 +8,7 @@ import 'firebase/firestore'
 import {getDataFromFireStore, saveDataToTheFireStore} from './ApiDefinition'
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles({
   customWidth: {
@@ -42,6 +43,10 @@ const inputRowStyles = {
 const inputStyles = {
   width: '25%',
 }
+const bannerIDStyles = {
+  width: '25%',
+  marginLeft: '58px'
+}
 
 const buttonStyles = {
   marginBottom: '2rem',
@@ -56,6 +61,10 @@ const saveButtonStyles = {
 
 const paraStyles = {
   marginLeft: '300px'
+}
+
+const paraInfoStyles = {
+  marginLeft: '195px'
 }
 
 const spanStyles = {
@@ -99,6 +108,11 @@ const popupSpanStyles = {
   marginLeft: '20px'
 } 
 
+const linkStyles = {
+   color: 'yellow',
+   marginLeft: '1px'
+}
+
 
 const App = () => {  
   const classes = useStyles();
@@ -134,8 +148,26 @@ const App = () => {
           valid: true,
           required: false
         },
+        augmentedBannerOneDetailsTwoDTargetURLOneInputVal: {
+          augmentedBannerOneDetailsTwoDTargetURLOneInputVal: '',
+          type: "url",
+          valid: true,
+          required: false
+        },
         augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal: {
           augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal: '',
+          type: "num",
+          valid: true,
+          required: false
+        },
+        augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal: {
+          augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal: '',
+          type: "url",
+          valid: true,
+          required: false
+        },
+        augmentedBannerOneDetailsBannerID: {
+          augmentedBannerOneDetailsBannerIDInputVal: '',
           type: "num",
           valid: true,
           required: false
@@ -321,8 +353,14 @@ const App = () => {
            <h4 style={headerStyles}>Stadium Banner</h4>
          </div>
          <div style={typeOfDeviceStyles}>
-           <p style={paraStyles}>Android</p>
-           <p style={paraStyles}>IOS</p>
+          <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={ <p>
+        Review best practices here for selecting target images for pattern recognition:
+        <a href="https://developers.google.com/ar/develop/java/augmented-images" target="_blank" style={linkStyles}>https://developers.google.com/ar/develop/java/augmented-images</a>
+      </p>}>
+           <span  style={spanStyles}><InfoIcon fontSize="large"/></span>
+           </Tooltip>
+           <p style={paraInfoStyles}>Android</p>
+           <p style={paraInfoStyles}>IOS</p>
          </div>
          <div style={inputRowStyles}>
            <span style={spanStyles}>
@@ -338,20 +376,33 @@ const App = () => {
           </div>
           <div style={inputRowStyles}>
            <span style={spanStyles}>
+         <p>BannerID</p>
+         <p>&#60;bannerID&#62;</p>
+         </span >
+           <Input style={!inputDetails.augmentedBannerOneDetailsBannerID.valid ? {...bannerIDStyles, ...inputErrorStyle} :bannerIDStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsBannerID.augmentedBannerOneDetailsBannerID} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsBannerID')}/>
+          </div>
+          <div style={inputRowStyles}>
+           <span style={spanStyles}>
          <p>2D Target Image #1:</p>
-         <p>&#60;imageSize[]&#62;</p>
+         <p>&#60;image[Size, URL]&#62;</p>
          </span >
          <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal}>
-           <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetImageOneInputVal')}/>
+           <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetImageOneInputVal')}/>
+           </Tooltip>
+           <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal}>
+           <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal} placeholder={'Enter the valid URL'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetURLOneInputVal')}/>
            </Tooltip>
           </div>
           <div style={inputRowStyles}>
            <span style={spanStyles}>
          <p>2D Target Image #2:</p>
-         <p>&#60;imageSize[]&#62;</p>
+         <p>&#60;image[Size, URL]&#62;</p>
          </span>
          <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal}>
-           <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.valid ? {...inputStyles, ...inputErrorStyle} :inputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal')}/>
+           <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal} placeholder={'Enter the Number'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal')}/>
+           </Tooltip>
+           <Tooltip interactive placement="top"  classes={{ tooltip: classes.customWidth }} title={inputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal}>
+           <Input style={!inputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.valid ? {...firstInputStyles, ...inputErrorStyle} :firstInputStyles} disabled={showEdit} value={inputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal} placeholder={'Enter the Valid URL'} onChange={(e) =>inputHandler(e,'augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal')}/>
            </Tooltip>
           </div>
       </div>

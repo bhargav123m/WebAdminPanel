@@ -12,7 +12,7 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
       if (doc.exists) {
           console.log("Document data:", doc.data());
           doc.data()['modelUrl'] !== undefined ? newInputDetails['popupStoreDetailsModelAndroidInputVal']['popupStoreDetailsModelAndroidInputVal'] = doc.data()['modelUrl'] : newInputDetails['popupStoreDetailsModelAndroidInputVal']['popupStoreDetailsModelAndroidInputVal'] = ''
-            newInputDetails['popupStoreDetailsModelIosInputVal']['popupStoreDetailsModelIosInputVal'] = ''
+          doc.data()['modelUrlIos'] !== undefined ? newInputDetails['popupStoreDetailsModelIosInputVal']['popupStoreDetailsModelIosInputVal'] = doc.data()['modelUrlIos'] :newInputDetails['popupStoreDetailsModelIosInputVal']['popupStoreDetailsModelIosInputVal'] = ''
       } else {
           console.log("No such document!");
       }
@@ -20,11 +20,13 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
       stadiumBannerRef.get().then(function(doc) {
           if (doc.exists) {
               console.log("Document data:", doc.data());
+              doc.data()['bannerId'] !== undefined ? newInputDetails['augmentedBannerOneDetailsBannerID']['augmentedBannerOneDetailsBannerID'] = doc.data()['bannerId'] :  newInputDetails['augmentedBannerOneDetailsBannerID']['augmentedBannerOneDetailsBannerID']  = ''
               doc.data()['modelUrl'] !== undefined ? newInputDetails['augmentedBannerOneDetailsAnimationAndroidInputVal']['augmentedBannerOneDetailsAnimationAndroidInputVal'] = doc.data()['modelUrl'] :  newInputDetails['augmentedBannerOneDetailsAnimationAndroidInputVal']['augmentedBannerOneDetailsAnimationAndroidInputVal']  = ''
-              doc.data()['banners'][0]['imageSizeOne'] !== undefined ? newInputDetails['augmentedBannerOneDetailsTwoDTargetImageOneInputVal']['augmentedBannerOneDetailsTwoDTargetImageOneInputVal'] = doc.data()['banners'][0]['imageSizeOne'] :  newInputDetails['augmentedBannerOneDetailsTwoDTargetImageOneInputVal']['augmentedBannerOneDetailsTwoDTargetImageOneInputVal'] = ''
-              doc.data()['banners'][1]['imageSizeTwo'] !== undefined ? newInputDetails['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal']['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal'] = doc.data()['banners'][1]['imageSizeTwo'] : newInputDetails['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal']['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal'] = ''
-            newInputDetails['augmentedBannerOneDetailsAnimationIosInputVal']['augmentedBannerOneDetailsAnimationIosInputVal'] = ''
-    
+              doc.data()['modelUrlIos'] !== undefined ?  newInputDetails['augmentedBannerOneDetailsAnimationIosInputVal']['augmentedBannerOneDetailsAnimationIosInputVal'] = doc.data()['modelUrlIos'] :   newInputDetails['augmentedBannerOneDetailsAnimationIosInputVal']['augmentedBannerOneDetailsAnimationIosInputVal']  = ''
+              doc.data()['banners'][0]['imageSize'] !== undefined ? newInputDetails['augmentedBannerOneDetailsTwoDTargetImageOneInputVal']['augmentedBannerOneDetailsTwoDTargetImageOneInputVal'] = doc.data()['banners'][0]['imageSize'] :  newInputDetails['augmentedBannerOneDetailsTwoDTargetImageOneInputVal']['augmentedBannerOneDetailsTwoDTargetImageOneInputVal'] = ''
+              doc.data()['banners'][1]['imageSize'] !== undefined ? newInputDetails['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal']['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal'] = doc.data()['banners'][1]['imageSize'] : newInputDetails['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal']['augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal'] = ''
+              doc.data()['banners'][0]['imageUrl'] !== undefined ? newInputDetails['augmentedBannerOneDetailsTwoDTargetURLOneInputVal']['augmentedBannerOneDetailsTwoDTargetURLOneInputVal'] = doc.data()['banners'][0]['imageUrl'] :  newInputDetails['augmentedBannerOneDetailsTwoDTargetURLOneInputVal']['augmentedBannerOneDetailsTwoDTargetURLOneInputVal'] = ''
+              doc.data()['banners'][1]['imageUrl'] !== undefined ? newInputDetails['augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal']['augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal'] = doc.data()['banners'][1]['imageUrl'] : newInputDetails['augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal']['augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal'] = ''
           } else {
                   console.log("No such document!");
           }
@@ -32,9 +34,9 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
  stadiumNoBannerRef.get().then(function(doc) {
      if (doc.exists) {
         doc.data()['modelUrl'] !== undefined ? newInputDetails['stadiumNoBaneerDetailsAnimationAndroidInputVal']['stadiumNoBaneerDetailsAnimationAndroidInputVal'] = doc.data()['modelUrl'] : newInputDetails['stadiumNoBaneerDetailsAnimationAndroidInputVal']['stadiumNoBaneerDetailsAnimationAndroidInputVal'] = ''
+        doc.data()['modelUrlIos'] !== undefined ? newInputDetails['stadiumNoBaneerDetailsAnimationIosInputVal']['stadiumNoBaneerDetailsAnimationIosInputVal']  = doc.data()['modelUrlIos'] : newInputDetails['stadiumNoBaneerDetailsAnimationIosInputVal']['stadiumNoBaneerDetailsAnimationIosInputVal']  = ''
         doc.data() !== undefined ?   newInputDetails['stadiumNoBaneerDetailsLatitudeAndroidInputVal']['stadiumNoBaneerDetailsLatitudeAndroidInputVal'] = doc.data()['location']['latitude'] : newInputDetails['stadiumNoBaneerDetailsLatitudeAndroidInputVal']['stadiumNoBaneerDetailsLatitudeAndroidInputVal'] = ''
         doc.data() !== undefined ?  newInputDetails['stadiumNoBaneerDetailsLongitudAandroidInputVal']['stadiumNoBaneerDetailsLongitudAandroidInputVal'] = doc.data()['location']['longitude'] : newInputDetails['stadiumNoBaneerDetailsLongitudAandroidInputVal']['stadiumNoBaneerDetailsLongitudAandroidInputVal'] = ''
-        newInputDetails['stadiumNoBaneerDetailsAnimationIosInputVal']['stadiumNoBaneerDetailsAnimationIosInputVal'] = ''
      } else {
          // doc.data() will be undefined in this case
          console.log("No such document!");
@@ -44,7 +46,7 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
      if (doc.exists) {
          console.log("Document data:", doc.data());
          doc.data()['modelUrl'] !== undefined ?  newInputDetails['unboxingInputDetailsSeasonalElementAndroidInputVal']['unboxingInputDetailsSeasonalElementAndroidInputVal'] = doc.data()['modelUrl'] : newInputDetails['unboxingInputDetailsSeasonalElementAndroidInputVal']['unboxingInputDetailsSeasonalElementAndroidInputVal'] = ''
-        newInputDetails['unboxingInputDetailsSeasonalElementIosInputVal']['unboxingInputDetailsSeasonalElementIosInputVal'] = ''
+         doc.data()['modelUrlIos'] !== undefined ?  newInputDetails['unboxingInputDetailsSeasonalElementIosInputVal']['unboxingInputDetailsSeasonalElementIosInputVal'] = doc.data()['modelUrlIos'] : newInputDetails['unboxingInputDetailsSeasonalElementIosInputVal']['unboxingInputDetailsSeasonalElementIosInputVal'] = ''
      } else {
          // doc.data() will be undefined in this case
          console.log("No such document!");
@@ -69,10 +71,14 @@ export const saveDataToTheFireStore = (newInputDetails, setInputDetails) => {
     const stadiumBannerRef = db.collection('stores').doc('banner').collection('individuals').doc('100_banner');
     const stadiumNoBannerRef = db.collection('stores').doc('no_banner').collection('individuals').doc('100_no_banner');
     const unboxingRef = db.collection('stores').doc('unboxing_v2').collection('individuals').doc('seasonal');
-    cloudAnchorRef.set({ modelUrl: newInputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal.length > 0 ? newInputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal : newInputDetails.popupStoreDetailsModelIosInputVal.popupStoreDetailsModelIosInputVal }, { merge: true })
-    stadiumBannerRef.set({ modelUrl: newInputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal.length > 0 ? newInputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal : newInputDetails.augmentedBannerOneDetailsAnimationIosInputVal.augmentedBannerOneDetailsAnimationIosInputVal, banners:[{"imageSizeOne": newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal,"imageUrl":""},{"imageSizeTwo":newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal,"imageUrl":""}] }, { merge: true })
-    stadiumNoBannerRef.set({ modelUrl: newInputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.stadiumNoBaneerDetailsAnimationAndroidInputVal.length > 0 ? newInputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.stadiumNoBaneerDetailsAnimationAndroidInputVal : newInputDetails.stadiumNoBaneerDetailsAnimationIosInputVal.stadiumNoBaneerDetailsAnimationIosInputVal, location: new firebase.firestore.GeoPoint(newInputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal, newInputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal),bannerId: "100" }, { merge: true })
-    unboxingRef.set({ modelUrl: newInputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.unboxingInputDetailsSeasonalElementAndroidInputVal.length > 0 ? newInputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.unboxingInputDetailsSeasonalElementAndroidInputVal : newInputDetails.unboxingInputDetailsSeasonalElementIosInputVal.unboxingInputDetailsSeasonalElementIosInputVal }, { merge: true })
+    cloudAnchorRef.set({ modelUrl: newInputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal }, { merge: true })
+    cloudAnchorRef.set({ modelUrlIos: newInputDetails.popupStoreDetailsModelIosInputVal.popupStoreDetailsModelIosInputVal }, { merge: true })
+    stadiumBannerRef.set({ modelUrl:  newInputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal, banners:[{"imageSize": newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal},{"imageSize":newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal}] }, { merge: true })
+    stadiumBannerRef.set({ modelUrlIos:  newInputDetails.augmentedBannerOneDetailsAnimationIosInputVal.augmentedBannerOneDetailsAnimationIosInputVal, banners:[{"imageSize": newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal},{"imageSize":newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal}] }, { merge: true })
+    stadiumNoBannerRef.set({ modelUrl:  newInputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.stadiumNoBaneerDetailsAnimationAndroidInputVal, location: new firebase.firestore.GeoPoint(newInputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal, newInputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal),bannerId: "100" }, { merge: true })
+    stadiumNoBannerRef.set({ modelUrlIos: newInputDetails.stadiumNoBaneerDetailsAnimationIosInputVal.stadiumNoBaneerDetailsAnimationIosInputVal, location: new firebase.firestore.GeoPoint(newInputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal, newInputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal),bannerId: "100" }, { merge: true })
+    unboxingRef.set({ modelUrl:  newInputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.unboxingInputDetailsSeasonalElementAndroidInputVal }, { merge: true })
+    unboxingRef.set({ modelUrlIos: newInputDetails.unboxingInputDetailsSeasonalElementIosInputVal.unboxingInputDetailsSeasonalElementIosInputVal }, { merge: true })
     .then(function() {
       toast("Changes Successfully changed", {
         position: "top-right",
