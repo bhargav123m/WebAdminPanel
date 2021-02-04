@@ -6,11 +6,9 @@ import { toast } from 'react-toastify';
 
 export const getDataFromFireStore = (inputDetails, setInputDetails) => {
     const newInputDetails = {...inputDetails}
-    console.log(newInputDetails)
-    const cloudAnchorRef = db.collection('stores').doc('cloud_anchor').collection('individuals').doc('100_StoreAtHome');
+    const cloudAnchorRef = db.collection('stores').doc('cloud_anchor').collection('individuals').doc('606_StoreAtHome');
     cloudAnchorRef.get().then(function(doc) {
       if (doc.exists) {
-          console.log("Document data:", doc.data());
           doc.data()['modelUrl'] !== undefined ? newInputDetails['popupStoreDetailsModelAndroidInputVal']['popupStoreDetailsModelAndroidInputVal'] = doc.data()['modelUrl'] : newInputDetails['popupStoreDetailsModelAndroidInputVal']['popupStoreDetailsModelAndroidInputVal'] = ''
           doc.data()['modelUrlIos'] !== undefined ? newInputDetails['popupStoreDetailsModelIosInputVal']['popupStoreDetailsModelIosInputVal'] = doc.data()['modelUrlIos'] :newInputDetails['popupStoreDetailsModelIosInputVal']['popupStoreDetailsModelIosInputVal'] = ''
       } else {
@@ -19,7 +17,6 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
       const stadiumBannerRef = db.collection('stores').doc('banner').collection('individuals').doc('100_banner');
       stadiumBannerRef.get().then(function(doc) {
           if (doc.exists) {
-              console.log("Document data:", doc.data());
               doc.data()['bannerId'] !== undefined ? newInputDetails['augmentedBannerOneDetailsBannerID']['augmentedBannerOneDetailsBannerID'] = doc.data()['bannerId'] :  newInputDetails['augmentedBannerOneDetailsBannerID']['augmentedBannerOneDetailsBannerID']  = ''
               doc.data()['modelUrl'] !== undefined ? newInputDetails['augmentedBannerOneDetailsAnimationAndroidInputVal']['augmentedBannerOneDetailsAnimationAndroidInputVal'] = doc.data()['modelUrl'] :  newInputDetails['augmentedBannerOneDetailsAnimationAndroidInputVal']['augmentedBannerOneDetailsAnimationAndroidInputVal']  = ''
               doc.data()['modelUrlIos'] !== undefined ?  newInputDetails['augmentedBannerOneDetailsAnimationIosInputVal']['augmentedBannerOneDetailsAnimationIosInputVal'] = doc.data()['modelUrlIos'] :   newInputDetails['augmentedBannerOneDetailsAnimationIosInputVal']['augmentedBannerOneDetailsAnimationIosInputVal']  = ''
@@ -44,7 +41,6 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
      const unboxingRef = db.collection('stores').doc('unboxing_v2').collection('individuals').doc('seasonal');
  unboxingRef.get().then(function(doc) {
      if (doc.exists) {
-         console.log("Document data:", doc.data());
          doc.data()['modelUrl'] !== undefined ?  newInputDetails['unboxingInputDetailsSeasonalElementAndroidInputVal']['unboxingInputDetailsSeasonalElementAndroidInputVal'] = doc.data()['modelUrl'] : newInputDetails['unboxingInputDetailsSeasonalElementAndroidInputVal']['unboxingInputDetailsSeasonalElementAndroidInputVal'] = ''
          doc.data()['modelUrlIos'] !== undefined ?  newInputDetails['unboxingInputDetailsSeasonalElementIosInputVal']['unboxingInputDetailsSeasonalElementIosInputVal'] = doc.data()['modelUrlIos'] : newInputDetails['unboxingInputDetailsSeasonalElementIosInputVal']['unboxingInputDetailsSeasonalElementIosInputVal'] = ''
      } else {
@@ -67,14 +63,14 @@ export const getDataFromFireStore = (inputDetails, setInputDetails) => {
 }
 
 export const saveDataToTheFireStore = (newInputDetails, setInputDetails) => {
-    const cloudAnchorRef = db.collection('stores').doc('cloud_anchor').collection('individuals').doc('100_StoreAtHome');
+    const cloudAnchorRef = db.collection('stores').doc('cloud_anchor').collection('individuals').doc('606_StoreAtHome');
     const stadiumBannerRef = db.collection('stores').doc('banner').collection('individuals').doc('100_banner');
     const stadiumNoBannerRef = db.collection('stores').doc('no_banner').collection('individuals').doc('100_no_banner');
     const unboxingRef = db.collection('stores').doc('unboxing_v2').collection('individuals').doc('seasonal');
     cloudAnchorRef.set({ modelUrl: newInputDetails.popupStoreDetailsModelAndroidInputVal.popupStoreDetailsModelAndroidInputVal }, { merge: true })
     cloudAnchorRef.set({ modelUrlIos: newInputDetails.popupStoreDetailsModelIosInputVal.popupStoreDetailsModelIosInputVal }, { merge: true })
-    stadiumBannerRef.set({bannerId: newInputDetails.augmentedBannerOneDetailsBannerID.augmentedBannerOneDetailsBannerID , modelUrl:  newInputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal, banners:[{"imageSize": newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal},{"imageSize":newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal}] }, { merge: true })
-    stadiumBannerRef.set({bannerId: newInputDetails.augmentedBannerOneDetailsBannerID.augmentedBannerOneDetailsBannerID , modelUrlIos:  newInputDetails.augmentedBannerOneDetailsAnimationIosInputVal.augmentedBannerOneDetailsAnimationIosInputVal, banners:[{"imageSize": newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal},{"imageSize":newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal,"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal}] }, { merge: true })
+    stadiumBannerRef.set({bannerId: newInputDetails.augmentedBannerOneDetailsBannerID.augmentedBannerOneDetailsBannerID , modelUrl:  newInputDetails.augmentedBannerOneDetailsAnimationAndroidInputVal.augmentedBannerOneDetailsAnimationAndroidInputVal, banners:[{"imageSize": parseFloat(newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal),"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal},{"imageSize": parseFloat(newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal),"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal}] }, { merge: true })
+    stadiumBannerRef.set({bannerId: newInputDetails.augmentedBannerOneDetailsBannerID.augmentedBannerOneDetailsBannerID , modelUrlIos:  newInputDetails.augmentedBannerOneDetailsAnimationIosInputVal.augmentedBannerOneDetailsAnimationIosInputVal, banners:[{"imageSize": parseFloat(newInputDetails.augmentedBannerOneDetailsTwoDTargetImageOneInputVal.augmentedBannerOneDetailsTwoDTargetImageOneInputVal),"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLOneInputVal.augmentedBannerOneDetailsTwoDTargetURLOneInputVal},{"imageSize": parseFloat(newInputDetails.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetImageTwoAndroidInputVal),"imageUrl":newInputDetails.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal.augmentedBannerOneDetailsTwoDTargetURLTwoAndroidInputVal}] }, { merge: true })
     stadiumNoBannerRef.set({ modelUrl:  newInputDetails.stadiumNoBaneerDetailsAnimationAndroidInputVal.stadiumNoBaneerDetailsAnimationAndroidInputVal, location: new firebase.firestore.GeoPoint(newInputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal, newInputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal),bannerId: "100" }, { merge: true })
     stadiumNoBannerRef.set({ modelUrlIos: newInputDetails.stadiumNoBaneerDetailsAnimationIosInputVal.stadiumNoBaneerDetailsAnimationIosInputVal, location: new firebase.firestore.GeoPoint(newInputDetails.stadiumNoBaneerDetailsLatitudeAndroidInputVal.stadiumNoBaneerDetailsLatitudeAndroidInputVal, newInputDetails.stadiumNoBaneerDetailsLongitudAandroidInputVal.stadiumNoBaneerDetailsLongitudAandroidInputVal),bannerId: "100" }, { merge: true })
     unboxingRef.set({ modelUrl:  newInputDetails.unboxingInputDetailsSeasonalElementAndroidInputVal.unboxingInputDetailsSeasonalElementAndroidInputVal }, { merge: true })

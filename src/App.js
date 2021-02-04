@@ -9,6 +9,8 @@ import {getDataFromFireStore, saveDataToTheFireStore} from './ApiDefinition'
 import Tooltip from '@material-ui/core/Tooltip';
 import { makeStyles } from '@material-ui/core/styles';
 import InfoIcon from '@material-ui/icons/Info';
+import db from "./firebaseInit";
+
 
 const useStyles = makeStyles({
   customWidth: {
@@ -259,6 +261,14 @@ const App = () => {
   })
 
     useEffect(() => {
+    //   const cloudAnchorRef = db.collection('stores').doc('cloud_anchor').collection('individuals')
+    //   cloudAnchorRef.get().then(function(docs) {
+    //     docs.forEach(val => {
+    //       console.log(val.id)
+    //     })
+    //   }).catch(function(error) {
+    //     console.log("Error getting document:", error);
+    // });
       getDataFromFireStore(inputDetails, setInputDetails)
     }, [])
 
